@@ -82,10 +82,22 @@ fn select_region() -> Result<(i16, i16, u16, u16)> {
 
     let mut values = coords.split_whitespace();
 
-    let x = values.next().unwrap().parse()?;
-    let y = values.next().unwrap().parse()?;
-    let w = values.next().unwrap().parse()?;
-    let h = values.next().unwrap().parse()?;
+    let x = values
+        .next()
+        .ok_or(anyhow::anyhow!("selection cancelled"))?
+        .parse()?;
+    let y = values
+        .next()
+        .ok_or(anyhow::anyhow!("selection cancelled"))?
+        .parse()?;
+    let w = values
+        .next()
+        .ok_or(anyhow::anyhow!("selection cancelled"))?
+        .parse()?;
+    let h = values
+        .next()
+        .ok_or(anyhow::anyhow!("selection cancelled"))?
+        .parse()?;
 
     Ok((x, y, w, h))
 }
