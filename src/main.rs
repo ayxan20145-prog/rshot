@@ -69,9 +69,16 @@ fn main() -> Result<()> {
         }
     }
 
-    img.save("screenshot.png")?;
+    let output = args
+        .iter()
+        .skip(1)
+        .find(|arg| arg.as_str() != "--select")
+        .map(String::as_str)
+        .unwrap_or("screenshot.png");
 
-    println!("saved screenshot.png");
+    img.save(output)?;
+
+    println!("saved {}", output);
 
     Ok(())
 }
