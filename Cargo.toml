@@ -4,3 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+x11rb = "0.13"
+image = "0.25"
+anyhow = "1"
